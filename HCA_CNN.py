@@ -798,3 +798,6 @@ if __name__ == "__main__":
     #print(np.shape(avg_rank_50))
     print('GE smaller that 1:', np.argmax(avg_rank_50 < 1))
     print('GE smaller that 5:', np.argmax(avg_rank_50 < 5))
+
+#Acknowledgement
+#This project builds upon the work of [Lichao Wu et. al](https://github.com/AISyLab/AutoSCA) in their project. We have used their implementation for the random search algorithm, built upon it and adapted it to fit the needs of our project.
