@@ -326,18 +326,6 @@ def find_hyperparam_index(hyperparam_comb, conv_layers, conv_filters, conv_kerne
     num_lr = len(learning_rate)
     num_af = len(activation_function)
 
-    # index = (c_layers_index * (num_c_filters * num_c_kernel_size * num_p_size * num_p_stride * num_p_type * num_layers * num_neurons * num_lr * num_af)) + \
-    #         (c_filters_index * (num_c_kernel_size * num_p_size * num_p_stride * num_p_type * num_layers * num_neurons * num_lr * num_af)) + \
-    #         (c_kernel_size_index * (num_p_size * num_p_stride * num_p_type * num_layers * num_neurons * num_lr * num_af)) + \
-    #         (p_size_index * (num_p_stride * num_p_type * num_layers * num_neurons * num_lr * num_af)) + \
-    #         (p_stride_index * (num_p_type * num_layers * num_neurons * num_lr * num_af)) + \
-    #         (p_type_index * (num_layers * num_neurons * num_lr * num_af)) + \
-    #         (layer_index * (num_neurons * num_lr * num_af)) + \
-    #         (neuron_index * (num_lr * num_af)) + \
-    #         (lr_index * num_af) + \
-    #         af_index
-
-    # return index
 
 def find_hyperparam_neighbours(hyperparam_comb, conv_layers, conv_filters, conv_kernel_size, pooling_size, pooling_stride, pooling_type, fc_layers, neurons_per_fcl, learning_rate, activation_function):
     try:
@@ -618,7 +606,6 @@ def objective_function(hyperparameters, X_profiling, Y_profiling, validation_dat
     return history.history[objective][-1] 
 
 def hill_climbing(X_profiling, Y_profiling, validation_data, conv_layers1, conv_filters1, conv_kernel_size1, pooling_size1, pooling_stride1, pooling_type1, fc_layers1, neurons_per_fcl1, learning_rate1, activation_function1, objective, direction, max_iterations=100, step_size=0.1):
-  parent_hyperparam_comb = [2, 200, 9, 2, 3, 'avg', 3, 48, 0.0001, 'tanh']
   current_solution = parent_hyperparam_comb 
   current_value = objective_function(current_solution, X_profiling, Y_profiling, validation_data, objective) 
   print("Initial Value:", current_value)
